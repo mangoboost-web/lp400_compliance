@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mango LP400 — Regulatory Compliance</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFB81C;
+    --dark: #15182D;
+    --mid: #4D4A49;
+    --light: #F5F5F7;
+    --border: #D8D9E4;
+    --sub: #777888;
+    --green: #00AF5B;
+    --warn-bg: #FFF8E1;
+    --warn-border: #FFB81C;
+    --todo-bg: #FFF3CD;
+    --todo-border: #F7AB14;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── TOP HEADER ── */
+  .site-header {
+    background: var(--dark);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+  }
+  .site-logo {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  /* ── HERO BAND ── */
+  .hero {
+    background: var(--dark);
+    padding: 48px 40px 40px;
+    border-bottom: 3px solid var(--yellow);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 32px; font-weight: 600;
+    color: var(--white); line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero-sub {
+    color: #A0A3B8; font-size: 14px; font-weight: 300;
+    max-width: 600px;
+  }
+
+  /* ── MARKING NOTICE ── */
+  .marking-notice {
+    background: var(--white);
+    border-left: 4px solid var(--yellow);
+    margin: 32px 40px 0;
+    padding: 20px 24px;
+    border-radius: 0 6px 6px 0;
+  }
+  .marking-notice p {
+    font-size: 14px; color: var(--mid);
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  .marking-notice p:last-child { margin-bottom: 0; }
+  .notice-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--sub); margin-bottom: 10px;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* ── PRODUCT INFO ── */
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .product-card-header {
+    grid-column: 1 / -1;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--sub);
+  }
+  .pinfo-item {}
+  .pinfo-key {
+    font-size: 11px; font-weight: 600;
+    color: var(--sub); text-transform: uppercase;
+    letter-spacing: 0.8px; margin-bottom: 4px;
+  }
+  .pinfo-val {
+    font-size: 14px; font-weight: 500; color: var(--dark);
+  }
+
+  /* ── SECTION BLOCK ── */
+  .cert-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .cert-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    background: #FAFAFA;
+  }
+  .cert-badge {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 10px; border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cert-badge.kc,
+  .cert-badge.ce,
+  .cert-badge.fcc,
+  .cert-badge.ic,
+  .cert-badge.tuv,
+  .cert-badge.env,
+  .cert-badge.ca,
+  .cert-badge.prec,
+  .cert-badge.contact { background: var(--mid); }
+
+  .cert-title {
+    font-size: 15px; font-weight: 600; color: var(--dark);
+    line-height: 1.3;
+  }
+  .cert-title small {
+    display: block;
+    font-size: 12px; font-weight: 400; color: var(--sub);
+    margin-top: 2px;
+  }
+  .cert-body { padding: 24px 28px; }
+
+  /* text blocks */
+  .cert-body p {
+    font-size: 14px; color: var(--mid);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .cert-body p:last-child { margin-bottom: 0; }
+
+  /* reg-id chip */
+  .reg-id {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--light); border: 1px solid var(--border);
+    border-radius: 5px; padding: 8px 14px;
+    margin-bottom: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; color: var(--dark); font-weight: 500;
+  }
+  .reg-id-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.8px; text-transform: uppercase; color: var(--sub);
+  }
+
+  /* standards table */
+  .std-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .std-table th {
+    text-align: left; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--sub); font-weight: 600;
+    padding: 6px 12px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .std-table td {
+    padding: 8px 12px;
+    font-size: 13px; color: var(--mid);
+    border-bottom: 1px solid #F0F0F5;
+    vertical-align: top;
+  }
+  .std-table tr:last-child td { border-bottom: none; }
+  .std-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--dark);
+    white-space: nowrap; padding-right: 20px;
+  }
+  .std-table tr:hover td { background: var(--light); }
+
+  /* warning box */
+  .warn-box {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px; color: #7A5000;
+    margin-top: 14px;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .warn-box .warn-icon {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .warn-box strong { font-weight: 600; }
+
+  /* todo box — 미확정 정보 표시 */
+  .todo-box {
+    background: var(--todo-bg);
+    border: 1px dashed var(--todo-border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px; color: #856404;
+    display: flex; gap: 8px; align-items: flex-start;
+    margin-top: 8px;
+  }
+  .todo-box::before {
+    content: '⚠ TBD';
+    font-size: 10px; font-weight: 700;
+    background: var(--todo-border); color: var(--dark);
+    padding: 2px 6px; border-radius: 3px;
+    white-space: nowrap; flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* contact grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  @media (max-width: 600px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .contact-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .contact-card-label {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--sub); margin-bottom: 8px;
+  }
+  .contact-card p {
+    font-size: 13px; color: var(--mid);
+    margin-bottom: 4px !important;
+  }
+
+  /* bullet list */
+  .std-list {
+    list-style: none; padding: 0; margin: 12px 0 0;
+  }
+  .std-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px; color: var(--mid);
+    padding: 6px 0;
+    border-bottom: 1px solid #F0F0F5;
+  }
+  .std-list li:last-child { border-bottom: none; }
+  .std-list li::before {
+    content: '';
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--yellow);
+    flex-shrink: 0; margin-top: 7px;
+  }
+  .std-list .std-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--dark);
+    white-space: nowrap; min-width: 140px;
+  }
+
+  /* divider label */
+  .divider-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--sub); margin: 32px 0 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .divider-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* footer */
+  footer {
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px; color: var(--sub);
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    margin-top: 40px;
+  }
+
+  .cert-section:has(.cert-badge.prec) .std-list li::before { display: none; }
+
+  @media (max-width: 640px) {
+    .site-header, .hero, .marking-notice { padding-left: 20px; padding-right: 20px; }
+    .page-wrap { padding: 0 20px 60px; }
+    .cert-body, .cert-header { padding-left: 20px; padding-right: 20px; }
+    .hero h1 { font-size: 24px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <svg class="site-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.47 45.65">
+    <style>.lc1{fill:#fdb933}.lc2{fill:#fff}</style>
+    <path class="lc1" d="M53.95,40.43h-5.62V5.71h6.94l5.84,20.64,5.83-20.64h6.94v34.72h-5.56v-24.38l-4.62,16.84h-5.12l-4.62-16.78v24.32Z"/>
+    <path class="lc1" d="M93.45,40.43l-1.32-7.21h-7.6l-1.21,7.21h-6.32l6.99-34.72h8.53l7.32,34.72h-6.39ZM85.36,28.43h5.88l-3.02-16.62-2.86,16.62Z"/>
+    <path class="lc1" d="M116.35,5.71h5.78v34.72h-5.94l-7.43-23v23h-5.84V5.71h6.1l7.32,22.67V5.71h0Z"/>
+    <path class="lc1" d="M145.62,16.38h-6.38v-4.56c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-2.58c-.59,0-1,.1-1.21.3-.22.2-.33.59-.33,1.18v22.56c0,.59.11.98.33,1.18.22.2.62.3,1.21.3h2.58c.59,0,.99-.1,1.21-.3.22-.2.33-.59.33-1.18v-7.7h-2.75v-4.46h9.14v12.82c0,3.64-2,5.44-6,5.44h-6.44c-4,0-6-1.82-6-5.44V11.15c0-3.64,2-5.44,6-5.44h6.44c4,0,6,1.82,6,5.44v5.22h0Z"/>
+    <path class="lc1" d="M156.13,5.71h6.72c4,0,6,1.82,6,5.44v23.82c0,3.64-2,5.44-6,5.44h-6.72c-4,0-6-1.82-6-5.44V11.15c0-3.64,2-5.44,6-5.44ZM162.51,34.1V12.03c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-2.92c-.63,0-1.04.1-1.26.3-.22.2-.33.59-.33,1.18v22.06c0,.59.11.98.33,1.18.22.2.64.3,1.26.3h2.92c.59,0,.99-.1,1.21-.3.22-.2.33-.6.33-1.18h0Z"/>
+    <path class="lc2" d="M173.96,5.71h13.2c3.99,0,6,1.82,6,5.44v7.48c0,2.31-.77,3.72-2.32,4.24,1.54.51,2.32,1.83,2.32,3.96v8.14c0,3.64-2,5.44-6,5.44h-13.2V5.71ZM186.9,19.08v-7.27c0-.59-.11-.98-.33-1.18-.22-.2-.64-.3-1.26-.3h-5v10.24h5c.62,0,1.04-.1,1.26-.3.22-.2.33-.6.33-1.18ZM186.9,34.32v-7.65c0-.59-.11-.98-.33-1.18-.22-.2-.64-.3-1.26-.3h-5v10.62h5c.62,0,1.04-.1,1.26-.3.22-.2.33-.6.33-1.18Z"/>
+    <path class="lc2" d="M203.96,5.71h6.72c4,0,6,1.82,6,5.44v23.82c0,3.64-2,5.44-6,5.44h-6.72c-4,0-6-1.82-6-5.44V11.15c0-3.64,2-5.44,6-5.44ZM210.34,34.1V12.03c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-2.92c-.63,0-1.04.1-1.26.3-.22.2-.33.59-.33,1.18v22.06c0,.59.11.98.33,1.18.22.2.64.3,1.26.3h2.92c.59,0,.99-.1,1.21-.3.22-.2.33-.6.33-1.18h0Z"/>
+    <path class="lc2" d="M227.56,5.71h6.72c4,0,6,1.82,6,5.44v23.82c0,3.64-2,5.44-6,5.44h-6.72c-4,0-6-1.82-6-5.44V11.15c0-3.64,2-5.44,6-5.44ZM233.94,34.1V12.03c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-2.92c-.63,0-1.04.1-1.26.3-.22.2-.33.59-.33,1.18v22.06c0,.59.11.98.33,1.18.22.2.64.3,1.26.3h2.92c.59,0,.99-.1,1.21-.3.22-.2.33-.6.33-1.18h0Z"/>
+    <path class="lc2" d="M256.4,34.1v-7.43c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-4.46c-3.78,0-5.66-1.83-5.66-5.5v-8.53c0-3.64,1.98-5.44,5.94-5.44h6.06c3.96,0,5.94,1.82,5.94,5.44v4.84h-6.38v-3.96c0-.59-.11-.98-.33-1.18-.22-.2-.63-.3-1.21-.3h-2.09c-.63,0-1.04.1-1.26.3-.22.2-.33.59-.33,1.18v6.98c0,.59.11.99.33,1.18.22.2.64.3,1.26.3h4.34c3.86,0,5.78,1.8,5.78,5.4v9.08c0,3.64-2,5.44-6,5.44h-5.94c-4,0-6-1.82-6-5.44v-4.78h6.33v3.9c0,.59.11.98.33,1.18.22.2.64.3,1.26.3h2.09c.59,0,.99-.1,1.21-.3.22-.2.33-.6.33-1.18h0Z"/>
+    <path class="lc2" d="M283.47,5.71v4.84h-6.11v29.88h-6.33V10.55h-6.06v-4.84h18.49Z"/>
+    <path class="lc1" d="M21.15,18.73c1.49,0,2.69-1.2,2.69-2.69s-1.2-2.69-2.69-2.69-2.69,1.2-2.69,2.69,1.2,2.69,2.69,2.69Z"/>
+    <path class="lc1" d="M5.42,45.33c1.35-1.15,6.33-7.03,7.49-8.67.92-1.3,1.61-3.58,1.56-4.53-.05-.91-.38-1.58-.95-1.88-.57-.3-1.31-.22-2.09.25-.82.49-2.38,2.39-2.91,3.81-.71,1.88-2.88,9.27-3.09,11.03h0Z"/>
+    <path class="lc1" d="M18.98,38.64c.45-.2.9-.43,1.35-.69.02.09.04.19.05.3.07.74-.12,1.56-.55,2.31-.74,1.29-4.35,4.31-5.45,5.09.09-1.08.41-3.89,1.14-6.04.11,0,.22-.01.33-.02.23-.01,1.35-.13,3.13-.94h0Z"/>
+    <path class="lc1" d="M2.31,31.41c.09.27.55,1.55,1.6,3.01-1.45,1.76-3.17,2.92-3.91,3.5.04-1.35.66-5.97,1.32-7.3.14-.27.3-.53.47-.75.14.5.31,1.01.51,1.54h0Z"/>
+    <path class="lc1" d="M10.08,12.49c.1-.07.2-.14.29-.21,1.83-1.34,5.06-3.69,5.39-3.94,2.87-2.35,4.64-5.89,4.66-5.93l.06-.12.08-.11c.87-1.1,1.91-1.8,3.1-2.08,1.41-.33,2.91.07,4.12,1.12,1.7,1.47,3.15,3.61,4.3,6.37,1.18,2.82,1.59,5.2,1.69,5.86.34,2.32,0,5.33-.93,8.27-1.17,3.69-3.23,7.15-5.96,10-2.07,2.16-4.1,3.85-6.08,5.04-.45.27-.89.51-1.33.73-1.76.87-2.87,1.01-3.1,1.03-.11.01-.22.02-.33.03-1.23.11-2.36.07-3.38-.07.48-.56.86-1.08,1.1-1.52.16-.29.29-.59.41-.88.62.02,1.27,0,1.94-.07h.03c.1-.02.96-.14,2.4-.88,1.42-.73,3.71-2.21,6.51-5.15,2.47-2.58,4.33-5.7,5.38-9.02.81-2.55,1.12-5.22.84-7.14-.18-1.21-.67-3.23-1.52-5.26-.99-2.36-2.24-4.24-3.62-5.43-.59-.51-1.28-.72-1.89-.58-.59.14-1.14.51-1.62,1.1-.38.73-2.26,4.19-5.28,6.66l-.05.04s-3.5,2.55-5.41,3.95c-.09.07-.19.14-.29.21-1.95,1.42-5.58,4.07-6.62,7.34v.04c-.05.1-.79,2.39-.11,5.71.13.62.3,1.27.54,1.95v.03s.02.04.02.04c0,.01.2.67.69,1.56.34.61.82,1.34,1.47,2.03.11.12.22.23.34.34-.04.06-.07.13-.11.2-.3.56-.57,1.39-.81,2.34-.51-.41-.96-.83-1.34-1.24-.44-.48-.82-.97-1.14-1.44-1.01-1.49-1.43-2.79-1.51-3.06-.19-.53-.34-1.05-.47-1.56-1.07-4.3-.1-7.37.02-7.73,1.29-4.05,5.35-7,7.53-8.6h0Z"/>
+  </svg>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="hero-tag">Regulatory Compliance</div>
+    <h1>Mango <span>LP400</span></h1>
+    <p class="hero-sub">Global certification and regulatory compliance information for the Mango LP400.</p>
+  </div>
+</div>
+
+<!-- MARKING NOTICE -->
+<div style="max-width:900px; margin:0 auto; padding:0 40px;">
+  <div class="marking-notice">
+    <div class="notice-label">Marking Consistency Notice / 마킹 일치성에 관한 안내</div>
+    <p>To ensure efficient global distribution, the packaging label contains a comprehensive set of international certification marks. However, the markings on the physical product itself are applied selectively based on the specific regulatory requirements of the destination country. Please refer to this page for the full details of all certifications (ex KC, CE, FCC, etc.) held by the Mango LP400.</p>
+    <p>효율적인 글로벌 유통을 위해 포장 박스 라벨에는 전체 국제 인증 마크가 통합 표기되어 있습니다. 다만, 제품 본체에는 해당 판매 국가의 법적 요구사항에 따른 마크만 선별적으로 부착될 수 있습니다. 본 페이지를 통해 Mango LP400이 취득한 전체 인증 내역(예: KC, CE, FCC 등)을 확인하실 수 있습니다.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
+
+  <!-- PRODUCT INFO -->
+  <div class="product-card">
+    <div class="product-card-header">
+      <div class="section-label">Product Information</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-key">Manufacturer (제조자)</div>
+      <div class="pinfo-val">Mangoboost, Inc. / (주)망고부스트</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-key">Country of Origin (제조국가)</div>
+      <div class="pinfo-val">Korea / 대한민국</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-key">Product Name (제품명)</div>
+      <div class="pinfo-val">Mango LP400</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-key">Safety Class</div>
+      <div class="pinfo-val">Class III equipment</div>
+    </div>
+  </div>
+
+  <!-- ── COMPLIANCE ── -->
+  <div class="divider-label">Regulatory Compliance &amp; Safety Information</div>
+
+  <!-- KC -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge kc">KC</div>
+      <div class="cert-title">
+        Korea Compliance
+        <small>KC — 대한민국 적합성 등록</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <div class="reg-id">
+        <span class="reg-id-label">Registration No.</span>
+        R-R-MBST-MBL400
+      </div>
+      <div class="reg-id" style="margin-top:6px;">
+        <span class="reg-id-label">KC 식별부호</span>
+        R-R-MBST-MBL400
+      </div>
+
+      <p><strong>사용자 안내문 (A급 기기 — 업무용 방송통신기자재)</strong><br>
+      이 기기는 업무용(A급) 전자파적합기기로서 판매자 또는 사용자는 이점을 주의하시기 바라며, 가정 외의 지역에서 사용하는 것을 목적으로 합니다.</p>
+
+      <p><strong>Class A Equipment (Industrial Broadcasting &amp; Communication Equipment)</strong><br>
+      This equipment has been tested for enterprise use (Class A) and is intended for use in non-residential environments.</p>
+
+      <table class="std-table">
+        <thead>
+          <tr><th>Standard</th><th>Description / 설명</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KS C 9832</td><td>Electromagnetic compatibility of multimedia equipment — Emission requirements<br><span style="font-size:12px;color:var(--sub)">멀티미디어 기기 전자파 방출 요구사항</span></td></tr>
+          <tr><td>KS C 9835</td><td>Electromagnetic compatibility of multimedia equipment — Immunity requirements<br><span style="font-size:12px;color:var(--sub)">멀티미디어 기기 전자파 내성 요구사항</span></td></tr>
+          <tr><td>KS C 9610-4-2</td><td>Electrostatic Discharge (ESD) Immunity<br><span style="font-size:12px;color:var(--sub)">정전기 방전 내성</span></td></tr>
+          <tr><td>KS C 9610-4-3</td><td>Radiated RF Electromagnetic Field Immunity<br><span style="font-size:12px;color:var(--sub)">방사 무선주파수 전자장 내성</span></td></tr>
+          <tr><td>KS C 9610-4-4</td><td>EFT/Burst Immunity<br><span style="font-size:12px;color:var(--sub)">전기적 빠른 과도현상/버스트 내성</span></td></tr>
+          <tr><td>KS C 9610-4-5</td><td>Surge Immunity<br><span style="font-size:12px;color:var(--sub)">서지 내성</span></td></tr>
+          <tr><td>KS C 9610-4-6</td><td>Conducted RF Electromagnetic Field Immunity<br><span style="font-size:12px;color:var(--sub)">전도성 무선주파수 전자장 내성</span></td></tr>
+          <tr><td>KS C 9610-4-11</td><td>Voltage Dips &amp; Interruptions Immunity<br><span style="font-size:12px;color:var(--sub)">전압 강하 및 순간 정전 내성</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CE -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge ce">CE</div>
+      <div class="cert-title">
+        CE Declaration of Conformity
+        <small>European Union</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <p>MangoBoost, Inc. hereby declares under our sole responsibility that the Mango LP400 is in compliance with the essential requirements of the following Directives, based on the Certificate of Conformity (CoC) issued by TÜV Rheinland.</p>
+
+      <p><strong>Directives:</strong></p>
+      <ul class="std-list" style="margin-bottom:14px;">
+        <li><span class="std-code">2014/30/EU</span><span>EMC Directive (Based on TÜV Certification)</span></li>
+        <li><span class="std-code">2011/65/EU</span><span>RoHS Directive (including Amendment 2015/863/EU) — Based on Internal Technical Documentation (DoC)</span></li>
+      </ul>
+
+      <table class="std-table">
+        <thead>
+          <tr><th>Standard</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>IEC 62368-1:2018</td><td>Safety — Certified for Safety Class III</td></tr>
+          <tr><td>EN 55032:2015+A11:2020</td><td>Electromagnetic compatibility of multimedia equipment — Emission Requirements</td></tr>
+          <tr><td>EN 55035:2017+A11:2020</td><td>Electromagnetic compatibility of multimedia equipment — Immunity Requirements</td></tr>
+          <tr><td>EN 61000-4-2:2009</td><td>Electrostatic Discharge</td></tr>
+          <tr><td>EN 61000-4-3:2006</td><td>RF Electromagnetic Field</td></tr>
+          <tr><td>EN 61000-4-4:2012</td><td>Fast Transients Common mode</td></tr>
+          <tr><td>EN 61000-4-5:2014</td><td>Surges, line to line and line to ground</td></tr>
+          <tr><td>EN 61000-4-6:2014</td><td>RF Common mode</td></tr>
+          <tr><td>EN 61000-4-11:2004</td><td>Voltage Dips and Interruptions</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FCC -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge fcc">FCC</div>
+      <div class="cert-title">
+        FCC Compliance
+        <small>United States — FCC Part 15, Subpart B</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <p>This device complies with FCC Part 15, Subpart B. Operation is subject to the following: (1) This device may not cause harmful interference, and (2) this device must accept any interference received.</p>
+      <p>This equipment has been tested and found to comply with the limits for a Class A digital device, pursuant to FCC Part 15, Subpart B. These limits are designed to provide reasonable protection against harmful interference when the equipment is operated in a commercial environment.</p>
+
+      <div class="warn-box">
+        <svg class="warn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1601.24 1373.17"><path fill="#ffdf00" d="M1581.06,1228.43l-261.22-439.63c-47.3-79.6-124.7-209.86-172-289.47L886.62,59.7c-47.3-79.6-124.7-79.6-172,0l-261.22,439.63c-47.3,79.61-124.7,209.87-172,289.47L20.19,1228.43c-47.3,79.61-8.6,144.74,86,144.74h1388.87c94.6,0,133.3-65.13,86-144.74ZM1491.47,1274.79c-7.41,13.02-21.79,20.79-38.46,20.79H148.24c-16.68,0-31.06-7.77-38.46-20.79-7.41-13.02-6.74-29.35,1.78-43.68L763.45,133.97c8.53-14.35,22.07-22.57,37.17-22.57s28.64,8.23,37.17,22.57l651.9,1097.14c8.52,14.34,9.18,30.67,1.78,43.68Z"/><path fill="#ffdf00" d="M178.69,1235.58h1243.87L800.62,188.87,178.69,1235.58ZM855.4,1158.11c-15.5,13.78-33.59,20.67-54.26,20.67s-39.36-6.81-55.03-20.41c-15.68-13.61-23.51-32.63-23.51-57.1,0-21.36,7.49-39.53,22.48-54.51,14.99-14.99,33.33-22.48,55.03-22.48s40.22,7.49,55.55,22.48c15.32,14.98,23,33.16,23,54.51,0,24.12-7.75,43.07-23.25,56.84ZM863.66,427.2c9.99,20.5,14.99,50.04,14.99,88.62,0,22.74-1.21,45.82-3.62,69.24l-22.22,254.75c-2.41,30.32-7.58,53.57-15.5,69.76-7.93,16.2-21.02,24.29-39.27,24.29s-31.52-7.83-38.75-23.51c-7.23-15.67-12.4-39.53-15.5-71.57l-16.54-247.51c-3.1-48.22-4.65-82.85-4.65-103.86,0-28.59,7.49-50.9,22.48-66.92,14.99-16.02,34.7-24.03,59.16-24.03,29.62,0,49.43,10.25,59.42,30.75Z"/><path d="M837.79,133.97c-8.53-14.35-22.07-22.57-37.17-22.57s-28.64,8.23-37.17,22.57L111.56,1231.11c-8.52,14.34-9.18,30.67-1.78,43.68,7.41,13.02,21.79,20.79,38.46,20.79h1304.76c16.68,0,31.06-7.77,38.46-20.79,7.41-13.02,6.74-29.35-1.78-43.68L837.79,133.97ZM178.69,1235.58L800.62,188.87l621.93,1046.71H178.69Z"/><path d="M800.11,1024.28c-21.7,0-40.05,7.49-55.03,22.48-14.99,14.98-22.48,33.16-22.48,54.51,0,24.46,7.83,43.49,23.51,57.1,15.67,13.6,34.02,20.41,55.03,20.41s38.75-6.89,54.26-20.67c15.5-13.77,23.25-32.72,23.25-56.84,0-21.36-7.67-39.53-23-54.51-15.33-14.99-33.84-22.48-55.55-22.48Z"/><path d="M745.08,420.48c-14.99,16.02-22.48,38.33-22.48,66.92,0,21.02,1.55,55.64,4.65,103.86l16.54,247.51c3.1,32.04,8.27,55.9,15.5,71.57,7.23,15.68,20.15,23.51,38.75,23.51s31.34-8.09,39.27-24.29c7.92-16.19,13.09-39.44,15.5-69.76l22.22-254.75c2.41-23.42,3.62-46.51,3.62-69.24,0-38.58-5-68.12-14.99-88.62-10-20.49-29.8-30.75-59.42-30.75-24.46,0-44.18,8.01-59.16,24.03Z"/></svg><span><strong>WARNING:</strong> Operation of this equipment in a residential area is likely to cause harmful interference in which case the user will be required to correct the interference at his own expense.</span>
+      </div>
+
+      <table class="std-table" style="margin-top:16px;">
+        <thead>
+          <tr><th>Standard</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>FCC Part 15.109</td><td>Radiated disturbance</td></tr>
+          <tr><td>FCC Part 15.107</td><td>Conducted disturbance</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICES -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge ic">ICES-003</div>
+      <div class="cert-title">
+        Industry Canada Statement
+        <small>Canada — ICES-003</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <p>CAN ICES-3 (A)/NMB-3(A) — This Class A digital apparatus complies with Canadian ICES-003.</p>
+      <p style="color:var(--sub);font-style:italic;">Cet appareil numérique de la classe A est conforme à la norme NMB-003 du Canada.</p>
+
+      <table class="std-table">
+        <thead>
+          <tr><th>Standard</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ICES-003 Issue7-3.2.2</td><td>Radiated emissions</td></tr>
+          <tr><td>ICES-003 Issue7-3.2.1</td><td>Conducted emissions</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- cTUVus -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge tuv">cTUVus</div>
+      <div class="cert-title">
+        North American Safety
+        <small>cTUVus — TÜV Rheinland Certified</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <p>This product has been certified by TÜV Rheinland to meet the safety standards of the United States and Canada:</p>
+      <ul class="std-list">
+        <li><span class="std-code">UL 62368-1</span></li>
+        <li><span class="std-code">CAN/CSA-C22.2 No. 62368-1</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ENVIRONMENTAL -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge env">RoHS / WEEE</div>
+      <div class="cert-title">
+        Environmental &amp; Chemical Regulations
+        <small>RoHS · REACH · WEEE</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <p><strong>RoHS / REACH:</strong> This product does not contain lead, mercury, cadmium, hexavalent chromium, PBB, or PBDE in excess of the limits imposed by EU Directive 2011/65/EU and REACH Regulation (EC) No 1907/2006.</p>
+      <p><strong>WEEE (Waste Electrical and Electronic Equipment):</strong> This symbol indicates that this product must not be disposed of with household waste. It is your responsibility to dispose of your waste equipment by handing it over to a designated collection point for the recycling of waste electrical and electronic equipment.</p>
+      <p style="font-size:13px;color:var(--sub);">* The WEEE symbol is marked on the product packaging label.</p>
+    </div>
+  </div>
+
+  <!-- CA PROP 65 -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge ca">Prop 65</div>
+      <div class="cert-title">
+        California Proposition 65 Warning
+        <small>State of California, USA</small>
+      </div>
+    </div>
+    <div class="cert-body">
+      <div class="warn-box">
+        <svg class="warn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1601.24 1373.17"><path fill="#ffdf00" d="M1581.06,1228.43l-261.22-439.63c-47.3-79.6-124.7-209.86-172-289.47L886.62,59.7c-47.3-79.6-124.7-79.6-172,0l-261.22,439.63c-47.3,79.61-124.7,209.87-172,289.47L20.19,1228.43c-47.3,79.61-8.6,144.74,86,144.74h1388.87c94.6,0,133.3-65.13,86-144.74ZM1491.47,1274.79c-7.41,13.02-21.79,20.79-38.46,20.79H148.24c-16.68,0-31.06-7.77-38.46-20.79-7.41-13.02-6.74-29.35,1.78-43.68L763.45,133.97c8.53-14.35,22.07-22.57,37.17-22.57s28.64,8.23,37.17,22.57l651.9,1097.14c8.52,14.34,9.18,30.67,1.78,43.68Z"/><path fill="#ffdf00" d="M178.69,1235.58h1243.87L800.62,188.87,178.69,1235.58ZM855.4,1158.11c-15.5,13.78-33.59,20.67-54.26,20.67s-39.36-6.81-55.03-20.41c-15.68-13.61-23.51-32.63-23.51-57.1,0-21.36,7.49-39.53,22.48-54.51,14.99-14.99,33.33-22.48,55.03-22.48s40.22,7.49,55.55,22.48c15.32,14.98,23,33.16,23,54.51,0,24.12-7.75,43.07-23.25,56.84ZM863.66,427.2c9.99,20.5,14.99,50.04,14.99,88.62,0,22.74-1.21,45.82-3.62,69.24l-22.22,254.75c-2.41,30.32-7.58,53.57-15.5,69.76-7.93,16.2-21.02,24.29-39.27,24.29s-31.52-7.83-38.75-23.51c-7.23-15.67-12.4-39.53-15.5-71.57l-16.54-247.51c-3.1-48.22-4.65-82.85-4.65-103.86,0-28.59,7.49-50.9,22.48-66.92,14.99-16.02,34.7-24.03,59.16-24.03,29.62,0,49.43,10.25,59.42,30.75Z"/><path d="M837.79,133.97c-8.53-14.35-22.07-22.57-37.17-22.57s-28.64,8.23-37.17,22.57L111.56,1231.11c-8.52,14.34-9.18,30.67-1.78,43.68,7.41,13.02,21.79,20.79,38.46,20.79h1304.76c16.68,0,31.06-7.77,38.46-20.79,7.41-13.02,6.74-29.35-1.78-43.68L837.79,133.97ZM178.69,1235.58L800.62,188.87l621.93,1046.71H178.69Z"/><path d="M800.11,1024.28c-21.7,0-40.05,7.49-55.03,22.48-14.99,14.98-22.48,33.16-22.48,54.51,0,24.46,7.83,43.49,23.51,57.1,15.67,13.6,34.02,20.41,55.03,20.41s38.75-6.89,54.26-20.67c15.5-13.77,23.25-32.72,23.25-56.84,0-21.36-7.67-39.53-23-54.51-15.33-14.99-33.84-22.48-55.55-22.48Z"/><path d="M745.08,420.48c-14.99,16.02-22.48,38.33-22.48,66.92,0,21.02,1.55,55.64,4.65,103.86l16.54,247.51c3.1,32.04,8.27,55.9,15.5,71.57,7.23,15.68,20.15,23.51,38.75,23.51s31.34-8.09,39.27-24.29c7.92-16.19,13.09-39.44,15.5-69.76l22.22-254.75c2.41-23.42,3.62-46.51,3.62-69.24,0-38.58-5-68.12-14.99-88.62-10-20.49-29.8-30.75-59.42-30.75-24.46,0-44.18,8.01-59.16,24.03Z"/></svg><span><strong>WARNING:</strong> This product can expose you to chemicals including lead, which is known to the State of California to cause cancer, and lead, which is known to the State of California to cause birth defects or other reproductive harm. For more information go to <a href="http://www.P65Warnings.ca.gov" style="color:#7A5000;">www.P65Warnings.ca.gov</a>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRECAUTIONS -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge prec">Warning</div>
+      <div class="cert-title">Precautions</div>
+    </div>
+    <div class="cert-body">
+      <ul class="std-list">
+        <li><span><strong>Thermal Hazard:</strong> The Mango LP400 and its heatsink/optical modules may reach high temperatures during operation. Allow the device to cool before handling.</span></li>
+        <li><span><strong>ESD Protection:</strong> Always use an anti-static wrist strap and grounded work surface when handling the Mango LP400 to prevent electrostatic discharge damage.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="cert-section">
+    <div class="cert-header">
+      <div class="cert-badge contact">Contact</div>
+      <div class="cert-title">Contact Information</div>
+    </div>
+    <div class="cert-body">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-label">Mangoboost Korea</div>
+          <p>서울 관악구 남부순환로 2072 3층, Mangoboost</p>
+          <p>Email: support@mangoboost.io</p>
+          <p>TEL: 02-123-4567</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Mangoboost HQ</div>
+          <p>3120 139th Ave SE, Ste 500, Bellevue, Washington 98005-4486, United States of America</p>
+          <p>Email: support@mangoboost.io</p>
+          <p>T
